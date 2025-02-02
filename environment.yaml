@@ -15,6 +15,7 @@ dependencies:
   - evaluate
   - datasets
   - pip:
+      -datasets
       - transformers>=4.31
       - scikit-learn
       - pandas
