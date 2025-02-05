@@ -13,6 +13,3 @@ class SQLCoder:
         print(response.json())
         return response.json()['result']['response']
     
-
-sqlcoder=SQLCoder("","")  # cloudflare token
-print(sqlcoder('hello'))

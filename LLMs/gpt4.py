@@ -14,6 +14,3 @@ class GPT4:
                                                           {"role":"user","content":prompt}])
         return response.choices[0].message.content
     
-
-gpt4=GPT4('','') # azure key, endpoint
-print(gpt4("hello"))

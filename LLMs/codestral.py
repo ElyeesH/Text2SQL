@@ -12,6 +12,3 @@ class Codestral:
                                                           {"role":"user","content":prompt}])
         return response.choices[0].message.content
 
-
-codestral=Codestral('')  # mistral api key
-print(codestral('hello'))

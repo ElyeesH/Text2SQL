@@ -12,7 +12,3 @@ class Gemini:
                                              generation_config=config)
         return response.text
 
-
-
-gemini=Gemini('')  # google api key
-print(gemini('hello'))
