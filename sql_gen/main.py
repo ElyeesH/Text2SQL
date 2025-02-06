@@ -198,7 +198,7 @@ def run_sql_generation(model,
         all_prompts.append(prompt)
 
     result = []
-    for i,it in enumerate(all_prompts):
+    for i,it in enumerate(tqdm(all_prompts)):
         response=llmapi(it)
         with open(log, 'a', encoding='utf-8') as log_file:
             log_file.write(it + '\n')
@@ -219,20 +219,20 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--model", type=str, default="deepseek")
-    parser.add_argument("--dataset", type=str, default="ppl_dev.json")
+    parser.add_argument("--model", type=str, default="sqlcoder")
+    parser.add_argument("--dataset", type=str, default="ppl_dev_add_sl.json")
     parser.add_argument("--out_file", type=str, default="raw.txt")
-    parser.add_argument("--kshot", type=int, default=2)
+    parser.add_argument("--kshot", type=int, default=5)
     parser.add_argument("--pool", type=int, default=1)
     parser.add_argument("--sl", action="store_true")
     parser.add_argument("--select_type", type=str, default="Euclidean_mask")
     
     args = parser.parse_args()
-    if args.sl == False:
+    if args.sl == True:
         input_data = gen_ppl_from_json(args.dataset, args.model[:-3])
     else:
         input_data = json.load(open(args.dataset, 'r'))
     print("schema linking: ", args.sl)
     print(args.dataset)
     run_sql_generation(args.model, input_data, "out.txt", "log.txt", args.kshot,
-                       args.select_type,  args.pool, args.sl)
+                       args.select_type,  args.pool, True)

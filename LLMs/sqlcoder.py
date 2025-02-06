@@ -9,7 +9,7 @@ class SQLCoder:
     def __call__(self, prompt):
         input = { "messages": [{"role": "system", "content": "You are a friendly assistant"},
                                 {"role": "user", "content": prompt}]}
-        response=requests.post(self.url, headers=self.headers,json=input)
-        print(response.json())
-        return response.json()['result']['response']
+        response=requests.post(self.url+self.model, headers=self.headers,json=input)
+        response=response.json()
+        return response['result']['response']
     
