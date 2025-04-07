@@ -6,4 +6,3 @@
 
 ## Run data_preprocess.py first then sql_gen/main.py
 
-## Follow the Error messages
